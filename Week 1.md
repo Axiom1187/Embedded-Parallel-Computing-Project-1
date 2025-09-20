@@ -1,6 +1,6 @@
-# STM32 Microcontroller Project - Week 1
+# STM32 Microcontroller Project - Week 2
 
-## 1. Project Description & Background
+## 1. Lab Description & Background
 This project introduces embedded systems development using the **STM32F401RE Nucleo-64** microcontroller board. The objective is to build familiarity with STM32 system.
 
 - Installing the STM32 software toolchain (CubeIDE, CubeMX, CubeProgrammer).
