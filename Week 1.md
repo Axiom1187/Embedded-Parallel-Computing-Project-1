@@ -80,4 +80,16 @@ The STM32F401RE is based on the Cortex-M4 core, mainly used in academic and indu
   - MCU: ARM Cortex-M4 @ 84 MHz
   - 512 KB Flash, 96 KB SRAM
   - On-board LED: **LD2 (Pin PA5)**
-  -
+  - ST-LINK/V2-2 debugger/programmer with virtual COM port
+- USB Type-A to Mini-B cable
+
+### APIs & Libraries
+- **HAL (Hardware Abstraction Layer)** for GPIO, UART, and peripheral setup
+- **CMSIS** for low-level Cortex-M functionality
+- **Bare-metal C code** for main program logic
+
+### Tools & Software
+- **STM32CubeIDE**: Code writing, compilation, debugging
+- **STM32CubeMX**: Peripheral configuration and code generation
+- **STM32CubeProgrammer**: Firmware flashing and board communication
+- **Serial Terminal** (PuTTY or CubeIDE console) for UART monitoring 
