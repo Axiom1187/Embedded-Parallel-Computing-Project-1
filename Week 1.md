@@ -18,6 +18,7 @@ The STM32F401RE is based on the Cortex-M4 core, mainly used in academic and indu
 - **Virtual COM Port (ST-LINK)**: Handles UART-to-USB communication.
 
 ┌─────────────────────────────┐
+
 │ Host PC │
 │ ─────────────────────────── │
 │ STM32CubeIDE (Code Dev) │
