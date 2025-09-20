@@ -19,24 +19,42 @@ The STM32F401RE is based on the Cortex-M4 core, mainly used in academic and indu
 
 ┌─────────────────────────────┐
 
-│ Host PC │
+│ Host PC                     │
+
 │ ─────────────────────────── │
-│ STM32CubeIDE (Code Dev) │
-│ STM32CubeMX (Config) │
+
+│ STM32CubeIDE (Code Dev)     │
+
+│ STM32CubeMX (Config)        │
+
 │ STM32CubeProgrammer (Flash) │
-│ Serial Terminal (UART COM) │
-└──────────────┬───────────────┘
-│ USB (ST-LINK/V2-1)
+
+│ Serial Terminal (UART COM)  │
+
+└──────────────┬──────────────┘
+
+  USB (ST-LINK/V2-1)
+  
 ┌──────────────▼───────────────┐
-│ STM32F401RE Nucleo-64 │
-│ ─────────────────────────── │
-│ GPIO (PA5) → LD2 (Blink) │
-│ USART2 (PA2/PA3) → ST-LINK │
-│ ST-LINK/V2-1 Debugger │
+
+│ STM32F401RE Nucleo-64        │
+
+│ ───────────────────────────  │
+
+│ GPIO (PA5) → LD2 (Blink)     │
+
+│ USART2 (PA2/PA3) → ST-LINK   │
+
+│ ST-LINK/V2-1 Debugger        │
+
 └──────────────┬───────────────┘
+
 │ Power/USB
+
 ┌───▼───┐
-│ LED │
+
+│ LED   │
+
 └───────┘
 
 
