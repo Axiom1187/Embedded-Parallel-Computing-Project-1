@@ -1,0 +1,50 @@
+# Project 1 — Week 4 Report  
+**Board:** STM32F401RE Nucleo-64  
+**RTOS Layer:** CMSIS-RTOS v2 (FreeRTOS Kernel)  
+**Peripherals:** I²C Sensor (TMP102), USART2 (115200 baud), GPIO (LED LD2)
+
+---
+
+## Overview  
+
+This week’s milestone extends Week 3 by adding multiple RTOS tasks and demonstrating **context switching** in FreeRTOS.  
+The project now contains three parallel tasks:
+
+| Task | Purpose | Priority |
+|-------|-----------|-----------|
+| **Sensor Task** | Reads temperature from TMP102 via I²C and updates a shared global variable. | Above Normal |
+| **Control Task** | Reads the global temperature value and toggles an LED when a set point is exceeded. | Normal |
+| **Default Task** | Idle loop used for timing and scheduling baseline work. | Normal |
+
+Later weeks will add an Actuator Task and a Logging Task to reach four concurrent threads.
+
+---
+
+## Project Setup Summary  
+
+1. Week 3 project was cloned to `TMP3task_and_ControlTask` workspace folder.  
+2. In CubeMX, **FreeRTOS → Tasks and Queues** was opened and a new task named `ControlTask` was added with priority lower than `SensorTask`.  
+3. Pin **PA5 (LED LD2)** was enabled as GPIO Output to serve as a trigger indicator.  
+4. USART2 (TX/RX) was verified active for serial logging.  
+5. Code was generated and compiled in STM32CubeIDE.
+
+---
+
+## Code Structure and Task Explanation  
+
+### Sensor Task (`StartTask02`) :contentReference[oaicite:0]{index=0}
+
+- Configures I²C1 to communicate with TMP102 (0x48 << 1).  
+- Requests the temperature register and reads two bytes.  
+- Combines and sign-extends the 12-bit reading to a signed 16-bit value.  
+- Converts raw data to Celsius (`value × 0.0625`).  
+- Stores the result in the **global variable** `g_temperature`.  
+- Transmits the value to the serial terminal over USART2 for debugging.  
+- Repeats every 1 s via `osDelay(1000)`.
+
+```
+g_temperature = val * 0.0625f;
+sprintf((char*)buf, "%.2f C\r\n", g_temperature);
+HAL_UART_Transmit(&huart2, buf, strlen((char*)buf), HAL_MAX_DELAY);
+```
+
