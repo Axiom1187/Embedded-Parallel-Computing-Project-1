@@ -28,22 +28,39 @@ This enables portability, modular design, and cleaner task scheduling compared t
 ### Overview  
 
 ┌────────────────────────────┐
+
 │ Host PC                    │
+
 │ • PuTTY                    │
+
 │ • STM32CubeProgrammer      │
+
 │ • STM32CubeIDE (debug)     │
+
 └───────────────┬────────────┘
+
 │ USB (ST-LINK V2-1, VCP)
+
 ┌───────────────▼────────────┐
+
 │ STM32F401RE Nucleo         │
+
 │ ┌───────────────────────┐  │
+
 │ │ CMSIS-RTOS v2 (FreeRTOS) │
+
 │ │ • sensorReadTask         │
+
 │ └───────────────────────┘  │
+
 │ Peripherals:               │
+
 │ • I²C1 → Sensor (SCL/SDA)  │
+
 │ • USART2 → PC (printf)     │
+
 │ • GPIO → LD2 (Heartbeat)   │
+
 └────────────────────────────┘
 
 ### Task Scheduling  
