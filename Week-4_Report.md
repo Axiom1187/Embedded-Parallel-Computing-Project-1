@@ -7,7 +7,8 @@
 
 ## Overview  
 
-This week’s milestone extends Week 3 by adding multiple RTOS tasks and demonstrating **context switching** in FreeRTOS.  
+This week’s milestone extends Week 3 by adding multiple RTOS tasks and demonstrating context switching in FreeRTOS.  
+
 The project now contains three parallel tasks:
 
 | Task | Purpose | Priority |
@@ -23,8 +24,8 @@ Later weeks will add an Actuator Task and a Logging Task to reach four concurren
 ## Project Setup Summary  
 
 1. Week 3 project was cloned to `TMP3task_and_ControlTask` workspace folder.  
-2. In CubeMX, **FreeRTOS → Tasks and Queues** was opened and a new task named `ControlTask` was added with priority lower than `SensorTask`.  
-3. Pin **PA5 (LED LD2)** was enabled as GPIO Output to serve as a trigger indicator.  
+2. In CubeMX, FreeRTOS → Tasks and Queues was opened and a new task named `ControlTask` was added with priority lower than `SensorTask`.  
+3. Pin PA5 (LED LD2) was enabled as GPIO Output to serve as a trigger indicator.  
 4. USART2 (TX/RX) was verified active for serial logging.  
 5. Code was generated and compiled in STM32CubeIDE.
 
@@ -126,6 +127,9 @@ Below are the key parameters used in this project:
 | `traceTASK_SWITCHED_IN()` | Linked to `traceTaskSwitch()` | Calls a **user-defined trace function** on every context switch for task monitoring. |
 
 These settings ensure real-time responsiveness and help demonstrate FreeRTOS task management concepts.
+
+---
+## Testing and Verification
 
 
 
