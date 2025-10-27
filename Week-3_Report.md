@@ -115,7 +115,7 @@ This enables portability, modular design, and cleaner task scheduling compared t
 
 ---
 
-### 🧮 Example (Bare-Metal Read)
+### Example (Bare-Metal Read)
 
 ```c
 #define TMP3_I2C_ADDR   (0x48 << 1)
@@ -132,6 +132,12 @@ float TMP3_ReadTemp_Bare(void) {
     if (raw & 0x800) raw |= 0xF000;
     return raw * 0.0625f;
 }
+```
+### USART Output
 
-
+```c
+char msg[50];
+sprintf(msg, "Temp: %.2f C\r\n", TMP3_ReadTemp_Bare());
+HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+```
 
