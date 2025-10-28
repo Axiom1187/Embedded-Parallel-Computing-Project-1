@@ -43,7 +43,7 @@ Later weeks will add an Actuator Task and a Logging Task to reach four concurren
 - Transmits the value to the serial terminal over USART2 for debugging.  
 - Repeats every 1 s via `osDelay(1000)`.
 
-```
+```c
 g_temperature = val * 0.0625f;
 sprintf((char*)buf, "%.2f C\r\n", g_temperature);
 HAL_UART_Transmit(&huart2, buf, strlen((char*)buf), HAL_MAX_DELAY);
@@ -56,7 +56,7 @@ HAL_UART_Transmit(&huart2, buf, strlen((char*)buf), HAL_MAX_DELAY);
 - If the temperature exceeds the set point, turns LED LD2 ON; otherwise OFF.
 - Runs twice per second (`osDelay(500)`), showing real-time trigger behavior.
 
-```
+```c
 if (g_temperature > TEMP_SETPOINT) {
     HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 } else {
@@ -73,13 +73,13 @@ A low-priority loop that executes osDelay(1) continuously. It represents the idl
 
 ### Trace Hook Macro in FreeRTOSConfig.h
 
-```
+```c
 #define traceTASK_SWITCHED_IN() traceTaskSwitch()
 ```
 Whenever the FreeRTOS scheduler switches to a different task, it calls the user-defined `traceTaskSwitch()` function in `main.c`.
 
 ### Trace Function Implementation
-```
+```c
 void traceTaskSwitch(void)
 {
     static uint32_t counter = 0;
