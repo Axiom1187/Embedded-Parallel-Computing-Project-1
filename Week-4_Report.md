@@ -131,6 +131,22 @@ These settings ensure real-time responsiveness and help demonstrate FreeRTOS tas
 ---
 ## Testing and Verification
 
+1. Connect the board via USB and open PuTTY at 115200 baud.
+2. Observe temperature readings (`xx.xx °C`) every second.
+3. increase sensor temperature (via touch or heat source) -> LED LD2 turns ON above 27 °C.
+4. Lowee temperature -> LED turns OFF.
+5. Consol shows occaasional task names confriming context switches.
+
+This demonstrates the path (Sensor -> Control -> LED) and scheduler behavior (FreeRTOS context switching).
+
+---
+## Key Takeaways
+
+- Multiple FreeRTOS tasks were created and run concurrently on a single-core STM32 MCU
+- Context switching was visualized through UART and LED activity
+- Global variable communication linked sensor and control threads
+- Preemptive multitasking allowed smooth task coordination without blocking
+
 
 
 
