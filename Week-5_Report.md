@@ -118,6 +118,19 @@ xTaskCreate(LoggingTask, "LoggingTask", 256, NULL, 1, NULL);
 
 vTaskStartScheduler();  // Starts the FreeRTOS kernel
 ```
+Each task is assigned a stack and priority. If no idle hook is defined, FreeRTOS creates an implicit Idle Task for background operation.
+
+---
+
+## Task Implementations
+
+
+
+
+
+
+
+
 
 
 
