@@ -76,7 +76,7 @@ This enables portability, modular design, and cleaner task scheduling compared t
 
 ### Initialization  
 1. **Kernel Startup**
-   ```
+   ```c
    osKernelInitialize();
    osThreadNew(sensorReadTask, NULL, &sensorReadTask_attributes);
    osKernelStart();
@@ -135,7 +135,7 @@ float TMP3_ReadTemp_Bare(void) {
 ```
 ### USART Output
 
-```
+```c
 char msg[50];
 sprintf(msg, "Temp: %.2f C\r\n", TMP3_ReadTemp_Bare());
 HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
@@ -153,7 +153,7 @@ HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
 
 ### Implementation 
 
-```
+```c
 /* USER CODE BEGIN 0 */
 float TMP3_ReadTemp(void) {
     uint8_t reg = TMP3_REG_TEMP, rx[2];
