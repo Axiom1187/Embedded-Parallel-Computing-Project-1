@@ -204,7 +204,9 @@ Allows verification of sensor values and queue operation via serial monitor.
 
 ## Inter-Task Communication Flow
 
+```scss
 SensorTask → (sensorQueue) → ControlTask → (actuatorQueue) → ActuatorTask
+                                                                    
                                                                     │  
                                                                     └── LoggingTask (UART monitor)
 
