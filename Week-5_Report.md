@@ -206,9 +206,38 @@ Allows verification of sensor values and queue operation via serial monitor.
 
 ```scss
 SensorTask → (sensorQueue) → ControlTask → (actuatorQueue) → ActuatorTask
-                                                                    
                                                                     │  
                                                                     └── LoggingTask (UART monitor)
+```
+Each queue isolates producer/consumer logic so tasks operate independently and non-blocking
+
+---
+
+## Testing Procedure
+
+1. Building and flash the project in the STM32CubeIDE
+2. Open PuTTY at 115200 baud
+3. Observe live temperature values printed by Logging Task
+4. Warm the TMP102 sensor -> LED LD2 activates when temperature > 27 °C.
+5. Cool sensor -> LED turns off.
+6. Confirm timing and smooth context switching between all four tasks.
+
+---
+
+## Benefits of Using FreeRTOS Queues
+
+- Eliminates shared global variables and race conditions
+- Built-in blocking mechanisms simplify synchronization
+- Improves code scalability and modularity for future sensors and actuators
+- Provides deterministic real-time data transfer between tasks.
+
+---
+
+## Key Takeaways
+
+- Migrated successfully from CMSIS-RTOS v2 to natice FreeRTOS API
+- Implemented four tasks with two data queues to enable full RTOS commuication
+- Demonstrated end-to-end real-time control loop (sensir
 
 
 
